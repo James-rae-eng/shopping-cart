@@ -10,19 +10,21 @@ const Cart = (props) => {
     return (
         <div className="cart">
             {props.cartItems.length !== 0 ? 
-                <div>
+                <div className="cartMain">
                     <div className="cartList">
                         {props.cartItems.map(product => {
-                                                return <div className="product" key={product.id}>
-                                                            <h2>{product.name}</h2>
-                                                            <p>£{product.price}</p>
-                                                            <button onClick={() => props.removeFromCart(product.id)}>Remove</button>
-                                                        </div>
-                                            })}
+                            return <div className="cartItem" key={product.id}>
+                                        <div className="itemMain">
+                                            <h2>{product.name}</h2>
+                                            <p>£{product.price}</p> 
+                                        </div>     
+                                        <button onClick={() => props.removeFromCart(product.id)}>Remove</button>
+                                    </div>
+                        })}
                     </div>
                     <div className="cartSummary">
                         <h3>Total: £{totalCost()}</h3>
-                        <button>Checkout</button>
+                        <button id="checkoutBtn">Checkout</button>
                     </div>
                 </div>
             : <div>

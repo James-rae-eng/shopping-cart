@@ -19,3 +19,68 @@ nav {
   align-items: center;
   border-bottom: 1px solid black;
 }
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 30px 0 0 30px;
+}
+
+.shop {
+  display: grid;
+  grid-template-columns: 500px 500px;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.product {
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+form {
+  display: flex;
+  gap: 30px;
+}
+
+form input {
+  width: 50px;
+}
+
+.cartMain {
+  display: flex;
+  padding: 30px;
+  gap: 150px;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cartItem {
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.itemMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+#checkoutBtn {
+  font-size: large;
+  padding: 3px 15px;
+}
+
+.cartSummary {
+  border: 1px solid lightgray;
+  padding: 10px 20px;
+  height: 120px;
+}
