@@ -9,14 +9,32 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [cartQuantity, setCartQuantity] = useState(0);
 
+  const findQuantity = (newCart) => {
+    const newQuantity = newCart.reduce((n, {quantity}) => n + quantity, 0);
+    setCartQuantity(newQuantity);
+  }
+
   const addToCart = (id, quantity) => {
-    const item = Products.find(item => item.id === Number(id));
     let newCart = cartItems;
-    for (let i = 0; i < quantity; i++) {
+
+    // Check if this item is new to the array, if it is then add it,
+    // else add to the quantity of the existing item
+    const index = newCart.findIndex(item => item.id === Number(id));
+
+    if (index === -1) {
+      // Get item details from product component, based on it's id
+      const item = Products.find(item => item.id === Number(id));
+      // Add a quantity key value pair to use with the cart
+      item.quantity = Number(quantity);
       newCart.push(item);
+    } else {
+      let currentNum = Number(cartItems[index].quantity);
+      newCart[index].quantity = currentNum += Number(quantity);
     }
+
+    // Update the state with the new array & set cart quantity
     setCartItems(newCart);
-    setCartQuantity(newCart.length);
+    findQuantity(newCart);
   }
 
   const removeFromCart = (id) => {
@@ -24,7 +42,7 @@ function App() {
       return item.id !== Number(id)
     });
     setCartItems(newCart);
-    setCartQuantity(newCart.length);
+    findQuantity(newCart);
   }
 
   return (

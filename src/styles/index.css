@@ -67,6 +67,12 @@ form input {
   border: 1px solid lightgray;
 }
 
+.cartBtns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .itemMain {
   display: flex;
   align-items: center;

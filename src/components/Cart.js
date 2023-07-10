@@ -17,8 +17,12 @@ const Cart = (props) => {
                                         <div className="itemMain">
                                             <h2>{product.name}</h2>
                                             <p>£{product.price}</p> 
-                                        </div>     
-                                        <button onClick={() => props.removeFromCart(product.id)}>Remove</button>
+                                        </div>  
+                                        <div className="cartBtns">
+                                            <p>Quantity:{product.quantity}</p> 
+                                            <button onClick={() => props.removeFromCart(product.id)}>Remove</button>  
+                                        </div>   
+                                        
                                     </div>
                         })}
                     </div>
