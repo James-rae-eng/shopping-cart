@@ -73,6 +73,12 @@ form input {
   align-items: center;
 }
 
+.cartQty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .itemMain {
   display: flex;
   align-items: center;

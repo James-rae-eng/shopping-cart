@@ -2,7 +2,6 @@ import Products from './Products';
 
 const Shop = (props) => {
 
-
     const handleSubmit = (e) => {
         // Prevent the browser from reloading the page
         e.preventDefault();

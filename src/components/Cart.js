@@ -3,8 +3,10 @@ import React from "react";
 const Cart = (props) => {
 
     const totalCost= () => {
-        let result = props.cartItems.reduce(function(acc, obj) {return acc + obj.price;},0);
-        return result;
+        let result = props.cartItems.reduce(function(acc, obj) {
+            return (acc + (obj.price * obj.quantity));
+        },0);
+        return result.toFixed(2);
     }
 
     return (
@@ -19,7 +21,11 @@ const Cart = (props) => {
                                             <p>£{product.price}</p> 
                                         </div>  
                                         <div className="cartBtns">
-                                            <p>Quantity:{product.quantity}</p> 
+                                            <div className="cartQty">
+                                                <button onClick={() => props.changeQty(product.id, (product.quantity - 1))}>-</button>
+                                                <p>QTY: {product.quantity}</p> 
+                                                <button onClick={() => props.changeQty(product.id, (product.quantity + 1))}>+</button>
+                                            </div>
                                             <button onClick={() => props.removeFromCart(product.id)}>Remove</button>  
                                         </div>   
                                         

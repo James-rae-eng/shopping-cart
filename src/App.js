@@ -45,6 +45,20 @@ function App() {
     findQuantity(newCart);
   }
 
+  const changeQty = (id, qty) => {
+    if (qty === 0) {
+      removeFromCart(id);
+    } else {
+      let newCart = cartItems;
+      const index = newCart.findIndex(item => item.id === id);
+      newCart[index].quantity = qty;
+
+      // Update the state with the new array & set cart quantity
+      setCartItems(newCart);
+      findQuantity(newCart);
+    }
+  };
+
   return (
     <div className="app">
       <nav>
@@ -56,7 +70,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home/>}/>
         <Route path="/shop" element={<Shop addToCart={addToCart}/>}/>
-        <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart}/>}/>
+        <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} changeQty={changeQty}/>}/>
       </Routes>
     </div>
   );
